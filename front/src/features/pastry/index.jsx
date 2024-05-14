@@ -47,6 +47,6 @@ export const pastryApi = createApi({
   })
 
   export const { useGetPastriesQuery, useGetWinPastriesQuery, useGetPastryFromIdQuery, useGetRefreshQuery, 
-    useLoginMutation,  } = pastryApi
+    useLoginMutation, useDeletePastryMutation, useCreatePastryMutation, useLogoutQuery } = pastryApi
 
   

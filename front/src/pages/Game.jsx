@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { rollDice, toggleDiceSelection, resetDiceSelection } from "../store/yamsSlice";
 import { Link } from "react-router-dom"; 
