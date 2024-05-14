@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { rollDice, toggleDiceSelection, resetDiceSelection } from "../store/yamsSlice";
 import { Link } from "react-router-dom"; 
@@ -19,9 +19,6 @@ const Game = () => {
       }, 1200); // Adjust time based on your animation needs
     }
   };
-
-  console.log(scores);
-  console.log(dice);
 
 
   return (
