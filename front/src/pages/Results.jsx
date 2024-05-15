@@ -1,21 +1,22 @@
 import { useSelector } from "react-redux";
 import { useGetWinPastriesQuery } from "../features/pastry";
+import { Link } from "react-router-dom";
 
 function Results() {
   const scores = useSelector((state) => state.yams.scores);
-  
-  const conditions = [
-    { key: 'yams', label: 'un yams', reward: 3 },
-    { key: 'carre', label: 'un carré', reward: 2 },
-    { key: 'suite', label: 'une suite', reward: 1 }
-  ];
-  
-  const result = conditions.find(condition => scores[condition.key] > 0);
-  const { data: pastries, error, isLoading } = useGetWinPastriesQuery(result ? result.reward : undefined);
-  
-  // Test :
-  // const { data: pastries, error, isLoading } = useGetWinPastriesQuery(3); 
 
+  const conditions = [
+    { key: "yams", label: "un yams", reward: 3 },
+    { key: "carre", label: "un carré", reward: 2 },
+    { key: "suite", label: "une suite", reward: 1 },
+  ];
+
+  const result = conditions.find((condition) => scores[condition.key] > 0);
+  const {
+    data: pastries,
+    error,
+    isLoading,
+  } = useGetWinPastriesQuery(result ? result.reward : undefined);
 
   return (
     <div>
@@ -24,11 +25,20 @@ function Results() {
         <p>Dommage, vous retenterez votre chance la prochaine fois !</p>
       ) : (
         <>
-          <p>Bravo ! Vous avez fait <strong>{result.label}</strong>. Vous avez donc gagné <strong>{result.reward} {result.reward > 1 ? 'pâtisseries' : 'pâtisserie'}!</strong></p>
+          <p>
+            Bravo ! Vous avez fait <strong>{result.label}</strong>. Vous avez
+            donc gagné{" "}
+            <strong>
+              {result.reward} {result.reward > 1 ? "pâtisseries" : "pâtisserie"}
+              !
+            </strong>
+          </p>
           {pastries && (
             <div className="pastryWonList">
               {pastries.map((pastry, index) => (
-                <div key={index} className="wonPastry">{pastry.name}</div>
+                <div key={index} className="wonPastry">
+                  {pastry.name}
+                </div>
               ))}
             </div>
           )}
@@ -42,14 +52,20 @@ function Results() {
           </tr>
         </thead>
         <tbody>
-        {conditions.map((cond, i) => (
-        <tr key={i}>
-          <td>{cond.key}</td>
-          <td>{scores[cond.key]}</td>
-        </tr>
-      ))}
+          {conditions.map((cond, i) => (
+            <tr key={i}>
+              <td>{cond.key}</td>
+              <td>
+                {" "}
+                <strong>{scores[cond.key]}</strong>{" "}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
+      <Link to="/game">
+        <button className="back-btn">Retourner au jeu</button>
+      </Link>
     </div>
   );
 }
