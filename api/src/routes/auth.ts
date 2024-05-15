@@ -56,6 +56,7 @@ router.post('/login', (req: Request, res: Response) => {
     });
 });
 
+
 // Endpoint pour s'enregistrer, créer un compte
 router.post("/register", function (req: Request, res: Response) {
     const { email, name, password }: User = trimAll(req.body);
