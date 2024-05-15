@@ -208,3 +208,11 @@ table {
     bottom: 20%;
   }
 }
+
+/* ADMIN */
+
+img.mini {
+  position: relative;
+  height: 100px;
+  width: 100px;
+}

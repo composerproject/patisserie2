@@ -3,6 +3,8 @@ import Game from "./pages/Game";
 import Home from "./pages/Home"; // Vérifie le chemin ici
 import './index.css';
 import Results from "./pages/Results";
+import Login from "./pages/Login";
+import Admin from "./pages/Admin";
 
 const App = () => {
   return (
@@ -13,6 +15,8 @@ const App = () => {
           <Route path="/" exact element={<Home />} />{" "}
           <Route path="/game" element={<Game />} />{" "}
           <Route path="/results" element={<Results />} />{" "}
+          <Route path="/login" element={<Login />} />{" "}
+          <Route path="/admin" element={<Admin />} />{" "}
         </Routes>
       </div>
     </Router>
