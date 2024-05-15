@@ -1,26 +1,26 @@
 import { useState } from 'react';
 import { useLoginMutation } from '../features/pastry';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { changeloggedIn } from '../store/auth';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [login, { isLoading, isError, error, data }] = useLoginMutation();
   const navigate = useNavigate(); // Navigation hook
+  const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const result = await login({ email, password }).unwrap();
-      console.log('Login successful:', result);
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('authToken', result.token); // Assuming the token is returned
-      navigate('/admin');  // Redirect to admin page using React Router
-    } catch (err) {
-      console.error('Login failed:', err);
-      localStorage.removeItem('isLoggedIn');
-      localStorage.removeItem('authToken');
+      dispatch(changeloggedIn(true));
+      // Assuming a successful login redirects to '/dashboard'
+      navigate('/admin');
+    } catch (error) {
+      console.error('Login failed:', error);
+      // Handle error, e.g., show an error message
     }
   };
 

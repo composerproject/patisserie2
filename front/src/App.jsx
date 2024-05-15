@@ -5,8 +5,12 @@ import './index.css';
 import Results from "./pages/Results";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
+import useMe from "./hooks/useMe";
 
 const App = () => {
+  useMe();  // Ensures that user authentication is checked on app start
+  // console.log(useMe());
+
   return (
     <Router>
       <div>
