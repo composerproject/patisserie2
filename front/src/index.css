@@ -222,8 +222,66 @@ table {
 
 /* ADMIN */
 
+img {
+  height:400px;
+  width: 400px;
+}
+
 img.mini {
   position: relative;
-  height: 100px;
-  width: 100px;
+  height:100px;
+  width:100px;
 }
+
+
+/* HOME */
+
+/* SCROLL GALLERY */
+
+div.horizontal-scroll-container {
+  display: flex;
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
+  width:85vw;
+  color: white;
+  gap:10px;
+  -ms-overflow-style: thin; /* Internet Explorer and Edge */
+  scrollbar-width: 5px; /* Firefox */
+}
+
+div.horizontal-scroll-container::-webkit-scrollbar {
+  height: 5px; /* Height of the horizontal scrollbar */
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: scrollbar background */
+}
+
+div.horizontal-scroll-container::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar itself */
+  border-radius: 10px; /* Optional: roundness of the scrollbar */
+}
+
+div.gallery-card {
+  position: relative;
+}
+
+div.gallery-card img {
+  /* padding: 10px 10px 0 10px; */
+  width:300px;
+  height:300px;
+}
+
+.gallery-card .container {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 0;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.horizontal-scroll-container p {
+  font-weight: 700;
+}
+
