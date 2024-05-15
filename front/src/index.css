@@ -35,6 +35,10 @@ h1 {
   line-height: 1.1;
   color: #daa520;
 }
+h2,
+h3 {
+  color: #daa520;
+}
 
 button {
   border-radius: 8px;
@@ -77,6 +81,9 @@ table {
 
 table {
   margin: auto;
+  border: 1px solid #daa520;
+  border-radius: 0.6rem;
+  padding: 1rem;
 }
 
 .diceList {
@@ -108,6 +115,10 @@ table {
   background-color: black;
   border-radius: 50%;
   position: absolute;
+}
+
+.back-btn {
+  margin-top: 2rem;
 }
 
 /* Positioning dots for each face */
