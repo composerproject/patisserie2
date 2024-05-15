@@ -1,11 +1,17 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { rollDice, toggleDiceSelection, resetDiceSelection } from "../store/yamsSlice";
-import { Link } from "react-router-dom"; 
+import {
+  rollDice,
+  toggleDiceSelection,
+  resetDiceSelection,
+} from "../store/yamsSlice";
+import { Link } from "react-router-dom";
 import Dice from "../components/Dice";
 
 const Game = () => {
-  const { dice, rollsLeft, selectedDice, scores } = useSelector((state) => state.yams);
+  const { dice, rollsLeft, selectedDice, scores } = useSelector(
+    (state) => state.yams
+  );
   const dispatch = useDispatch();
   const [isRolling, setIsRolling] = useState(false); // State to control dice rolling
 
@@ -20,31 +26,41 @@ const Game = () => {
     }
   };
 
-
   return (
-    <div>
+    <div className="diceWrapper">
       <div className="diceList">
         {dice.map((d, i) => {
           // Determine the onClick function based on the game state
           // const handleDiceClick = rollsLeft < 3 ? () => dispatch(toggleDiceSelection(i)) : undefined;
-          const handleDiceClick = rollsLeft < 50 ? () => dispatch(toggleDiceSelection(i)) : undefined; //test
+          const handleDiceClick =
+            rollsLeft < 50 ? () => dispatch(toggleDiceSelection(i)) : undefined; //test
 
           return (
-            <div key={i} onClick={handleDiceClick}
-                 style={{ border: selectedDice[i] ? '2px solid green' : 'none', cursor: 'pointer' }}>
+            <div
+              key={i}
+              onClick={handleDiceClick}
+              style={{
+                border: selectedDice[i] ? "2px solid green" : "none",
+                cursor: "pointer",
+              }}
+            >
               <Dice number={d} rolling={isRolling && selectedDice[i]} />
             </div>
           );
         })}
       </div>
-      <div>Lancers restants: {rollsLeft}</div>
+      <div>
+        {" "}
+        <p>
+          {" "}
+          <u>Lancers restants: {rollsLeft} </u>{" "}
+        </p>
+      </div>
       <button onClick={rollSelectedDice} disabled={rollsLeft === 0}>
         Lancer les dés
       </button>
       <Link to="/results">
-        <button>
-          Voir le résultat
-        </button>
+        <button>Voir le résultat</button>
       </Link>
     </div>
   );
