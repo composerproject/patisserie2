@@ -30,8 +30,6 @@ const Game = () => {
     <div className="diceWrapper">
       <div className="diceList">
         {dice.map((d, i) => {
-          // Determine the onClick function based on the game state
-          // const handleDiceClick = rollsLeft < 3 ? () => dispatch(toggleDiceSelection(i)) : undefined;
           const handleDiceClick =
             rollsLeft < 50 ? () => dispatch(toggleDiceSelection(i)) : undefined; //test
 
@@ -39,10 +37,7 @@ const Game = () => {
             <div
               key={i}
               onClick={handleDiceClick}
-              style={{
-                border: selectedDice[i] ? "2px solid green" : "none",
-                cursor: "pointer",
-              }}
+              className={`dice ${selectedDice[i] ? "selected" : ""}`}
             >
               <Dice number={d} rolling={isRolling && selectedDice[i]} />
             </div>
