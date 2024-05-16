@@ -53,6 +53,13 @@ export const pastryApi = createApi({
           method: 'DELETE',
         }),
       }),
+      updatePastry: builder.mutation({
+        query: ({id, data}) => ({
+          url:  `api/pastry/${id}`,
+          method: 'PUT',
+          body: data
+        }),
+      }),
       // ME
       getUsers: builder.query({
         query: () => `users`,
@@ -72,6 +79,6 @@ export const pastryApi = createApi({
 
   export const { useGetPastriesQuery, useGetWinPastriesQuery, useGetPastryFromIdQuery, useGetRefreshQuery, 
     useLoginMutation, useDeletePastryMutation, useCreatePastryMutation, useLogoutQuery,
-  useGetUsersQuery, useGetMeQuery, useLogoutMutation, useGetApiPastriesQuery } = pastryApi
+  useGetUsersQuery, useGetMeQuery, useLogoutMutation, useGetApiPastriesQuery, useUpdatePastryMutation } = pastryApi
 
   
