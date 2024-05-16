@@ -28,53 +28,51 @@ const Game = () => {
   };
 
   // equivalent de useMe
-  const { data: me, error : meError, isLoading : meIsLoading } = useGetMeQuery();
- 
-
-
-
-
+  const { data: me, error: meError, isLoading: meIsLoading } = useGetMeQuery();
 
   return (
     <>
-    <h2>Bonjour {me? me.name : ""} ! </h2>
-    <div className="game-wrapper">
-      <div className="diceWrapper content-wrapper">
-        <div className="diceList">
-          {dice.map((d, i) => {
-            const handleDiceClick =
-              rollsLeft < 50
-                ? () => dispatch(toggleDiceSelection(i))
-                : undefined; //test
-
-            return (
-              <div
-                key={i}
-                onClick={handleDiceClick}
-                className={`dice ${selectedDice[i] ? "selected" : ""}`}
-              >
-                <Dice number={d} rolling={isRolling && selectedDice[i]} />
-              </div>
-            );
-          })}
-        </div>
-        <div>
+      <div className="game-wrapper">
+        <h2 className="">
           {" "}
-          <p>
+          <strong>Bonjour {me ? me.name : ""} ! </strong>{" "}
+        </h2>
+        <div className="diceWrapper content-wrapper">
+          <div className="diceList">
+            {dice.map((d, i) => {
+              const handleDiceClick =
+                rollsLeft < 50
+                  ? () => dispatch(toggleDiceSelection(i))
+                  : undefined; //test
+
+              return (
+                <div
+                  key={i}
+                  onClick={handleDiceClick}
+                  className={`dice ${selectedDice[i] ? "selected" : ""}`}
+                >
+                  <Dice number={d} rolling={isRolling && selectedDice[i]} />
+                </div>
+              );
+            })}
+          </div>
+          <div>
             {" "}
-            <u>Lancers restants: {rollsLeft} </u>{" "}
-          </p>
-        </div>
-        <div className="game-button-wrapper">
-          <button onClick={rollSelectedDice} disabled={rollsLeft === 0}>
-            Lancer les dés
-          </button>
-          <Link to="/results">
-            <button>Voir le résultat</button>
-          </Link>
+            <p>
+              {" "}
+              <u>Lancers restants: {rollsLeft} </u>{" "}
+            </p>
+          </div>
+          <div className="game-button-wrapper">
+            <button onClick={rollSelectedDice} disabled={rollsLeft === 0}>
+              Lancer les dés
+            </button>
+            <Link to="/results">
+              <button>Voir le résultat</button>
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };
