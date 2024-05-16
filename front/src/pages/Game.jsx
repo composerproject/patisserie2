@@ -27,7 +27,7 @@ const Game = () => {
   };
 
   return (
-    <div className="diceWrapper">
+    <div className="diceWrapper content-wrapper">
       <div className="diceList">
         {dice.map((d, i) => {
           const handleDiceClick =
@@ -51,12 +51,14 @@ const Game = () => {
           <u>Lancers restants: {rollsLeft} </u>{" "}
         </p>
       </div>
-      <button onClick={rollSelectedDice} disabled={rollsLeft === 0}>
-        Lancer les dés
-      </button>
-      <Link to="/results">
-        <button>Voir le résultat</button>
-      </Link>
+      <div className="game-button-wrapper">
+        <button onClick={rollSelectedDice} disabled={rollsLeft === 0}>
+          Lancer les dés
+        </button>
+        <Link to="/results">
+          <button>Voir le résultat</button>
+        </Link>
+      </div>
     </div>
   );
 };
