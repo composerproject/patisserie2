@@ -22,7 +22,7 @@ const App = () => {
     <Router>
       <div className="global-wrapper">
         <div className="nav-toggle-button" onClick={toggleNavigation}>
-          <img src="../public/bars-red.svg" alt="" />
+          <img src="../public/Bars-svg.svg" alt="" />
         </div>
         <nav className={isOpen ? "open" : "closed"}>
           <h1 className="main-title">Gourmandise</h1>
