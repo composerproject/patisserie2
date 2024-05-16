@@ -47,6 +47,7 @@ const meSlice = createSlice({
         console.log("slice : succeeded");
           state.status = 'succeeded';
           state.user = action.payload; // assuming the payload is the user object
+          // state.user = {id:1,name:"Alice"}; // assuming the payload is the user object
         }
       )
       .addMatcher(
@@ -58,30 +59,7 @@ const meSlice = createSlice({
           state.error = action.error; // assuming the error is returned in action.error
         }
       )
-      // test
-      .addMatcher(
-          pastryApi.endpoints.getPastries.matchPending,
-          state => {
-              console.log("loading");
-              state.status = 'loading';
-        }
-      )
-      .addMatcher(
-          pastryApi.endpoints.getPastries.matchFulfilled,
-          (state, action) => {
-            console.log("succeeded");
-          state.status = 'succeeded';
-          state.user = action.payload; // assuming the payload is the user object
-        }
-      )
-      .addMatcher(
-          pastryApi.endpoints.getPastries.matchRejected,
-          (state, action) => {
-              console.log("failed");
-              state.status = 'failed';
-          state.error = action.error; // assuming the error is returned in action.error
-        }
-      );
+
   }
 });
 
