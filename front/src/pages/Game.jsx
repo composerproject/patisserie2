@@ -30,26 +30,7 @@ const Game = () => {
   const { data: me, error : meError, isLoading : meIsLoading } = useGetMeQuery();
  
 
-  // const handleLogout = async () => {
-  //   try {
-  //     await logout().unwrap(); // Call the logout endpoint
-  //     dispatch(resetAuth());  // Reset the auth state in Redux
-  //   } catch (error) {
-  //     // console.error('Logout failed:', error);
-  //   }
-  // };
 
-  // useEffect(() => {
-  //   if (isSuccess) {
-  //     // console.log("Logged out successfully!");
-  //     // window.location.href = '/login'; // Redirect to login after logout
-  //   }
-  // }, [isSuccess]);
-
-  // const images = pastries ? pastries.map(pastry => ({
-  //   name: pastry.name,
-  //   image: pastry.image
-  // })) : [];
 
   const handleGetMe = async () => {
     console.log("handle get me");
@@ -72,37 +53,41 @@ const Game = () => {
     <>
     {/* <button onClick={handleGetMe}>Get Me Query</button> */}
     <h2>Bonjour {me? me.name : ""} ! </h2>
-    <div className="diceWrapper content-wrapper">
-      <div className="diceList">
-        {dice.map((d, i) => {
-          const handleDiceClick =
-            rollsLeft < 50 ? () => dispatch(toggleDiceSelection(i)) : undefined; //test
+    <div className="game-wrapper">
+      <div className="diceWrapper content-wrapper">
+        <div className="diceList">
+          {dice.map((d, i) => {
+            const handleDiceClick =
+              rollsLeft < 50
+                ? () => dispatch(toggleDiceSelection(i))
+                : undefined; //test
 
-          return (
-            <div
-              key={i}
-              onClick={handleDiceClick}
-              className={`dice ${selectedDice[i] ? "selected" : ""}`}
-            >
-              <Dice number={d} rolling={isRolling && selectedDice[i]} />
-            </div>
-          );
-        })}
-      </div>
-      <div>
-        {" "}
-        <p>
+            return (
+              <div
+                key={i}
+                onClick={handleDiceClick}
+                className={`dice ${selectedDice[i] ? "selected" : ""}`}
+              >
+                <Dice number={d} rolling={isRolling && selectedDice[i]} />
+              </div>
+            );
+          })}
+        </div>
+        <div>
           {" "}
-          <u>Lancers restants: {rollsLeft} </u>{" "}
-        </p>
-      </div>
-      <div className="game-button-wrapper">
-        <button onClick={rollSelectedDice} disabled={rollsLeft === 0}>
-          Lancer les dés
-        </button>
-        <Link to="/results">
-          <button>Voir le résultat</button>
-        </Link>
+          <p>
+            {" "}
+            <u>Lancers restants: {rollsLeft} </u>{" "}
+          </p>
+        </div>
+        <div className="game-button-wrapper">
+          <button onClick={rollSelectedDice} disabled={rollsLeft === 0}>
+            Lancer les dés
+          </button>
+          <Link to="/results">
+            <button>Voir le résultat</button>
+          </Link>
+        </div>
       </div>
     </div>
     </>
