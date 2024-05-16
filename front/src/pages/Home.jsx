@@ -4,6 +4,7 @@ import Gallery from "../components/Gallery";
 import { useDispatch } from "react-redux";
 import { resetAuth } from "../store/auth";
 import { useEffect } from "react";
+import FavoritePastryCard from "../components/FavoritePastryCard";
 
 const Home = () => {
   const dispatch = useDispatch();  
@@ -34,26 +35,39 @@ const Home = () => {
 
   return (
     <>
-      <div className="content-wrapper">
-        <p className="alert-message">Le saviez vous ? </p>
+    <section id="concours-section">
+      {/* <div className="content-wrapper"> */}
+      <div className="circle-wrapper">
+       
+       <h3>Jeu Yahtzee</h3>
+        {/* <p className="alert-message"> */}
+{/*<button onClick={handleLogout} disabled={isLoggingOut}>Log Out</button>*/}
+          {/* Gourmandise organise un jeu concours inspiré du yahtzee ! */}
+        {/* </p>{" "} */}
         <p className="alert-message">
-        <button onClick={handleLogout} disabled={isLoggingOut}>Log Out</button>
-          Gourmandise organise un jeux concours axé sur le yams !
-        </p>{" "}
-        <p className="alert-message">
-          C'est l'occasion unique de gagner des patisseries succulente alors
-          dépéchez- vous d'en profiter !!! 🍰{" "}
+          {/* C'est l'occasion unique de gagner des patisseries succulente alors
+          dépéchez- vous d'en profiter !!! 🍰{" "} */}
+          Jusqu'à 3 pâtisseries à gagner !
         </p>
-        <h2>
-          Pour accéder au jeu c'est cliquez juste en dessous, bonne chance !
-        </h2>
+
         <Link to="/game">
           <button>Je tente ma chance</button>
         </Link>
       </div>
+      </section>
+      {/* {pastries && <Gallery images={images} />} */}
       {isLoading && <p>Loading...</p>}
       {error && <p>Error loading pastries: {error.message}</p>}
-      {pastries && <Gallery images={images} />}
+      {pastries && (
+        <section>
+          <h3>Découvrez nos <strong>meilleures</strong> pâtisseries</h3>
+          <div className="favorite-cards">
+      <FavoritePastryCard img={images[0]}/>
+      <FavoritePastryCard img={images[1]}/>
+      <FavoritePastryCard img={images[2]}/>
+      </div>
+      </section>
+      )}
 
       <div className="second-section"></div>
     </>
