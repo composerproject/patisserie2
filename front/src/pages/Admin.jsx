@@ -1,3 +1,4 @@
+import {useNavigate} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useGetPastriesQuery, useDeletePastryMutation, useCreatePastryMutation, useUpdatePastryMutation } from '../features/pastry';
 
@@ -11,6 +12,8 @@ function Admin() {
   const [newStock, setNewStock] = useState(0);
   const [editingId, setEditingId] = useState(null);
   const [editFormData, setEditFormData] = useState({ name: '', image: '', stock: 0 });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
       if (isDeletingSuccess || createSuccess) {
@@ -59,7 +62,12 @@ function Admin() {
     setEditingId(null);
   };
 
-  if (!pastries) return;
+  if (!pastries){
+    navigate('/login');
+    // console.error("") // afficher message d'erreur sur la page
+  return;
+  }
+    
 
   return (
     <>
