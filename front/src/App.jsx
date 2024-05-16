@@ -18,6 +18,9 @@ const App = () => {
   const toggleNavigation = () => {
     setIsOpen(!isOpen);
   };
+  const closeNavigation = () => {
+    setIsOpen(false);
+  };
   return (
     <Router>
       <div className="global-wrapper">
@@ -27,16 +30,16 @@ const App = () => {
         <nav className={isOpen ? "open" : "closed"}>
           <h1 className="main-title">Gourmandise</h1>
           <ul>
-            <Link to="/">
+            <Link to="/" onClick={closeNavigation}>
               <li>Accueil</li>
             </Link>
-            <Link to="/game">
+            <Link to="/game" onClick={closeNavigation}>
               <li>Jeu</li>
             </Link>
-            <Link to="/about">
+            <Link to="/about" onClick={closeNavigation}>
               <li>À propos</li>
             </Link>
-            <Link to="/contact">
+            <Link to="/contact" onClick={closeNavigation}>
               <li>Contact</li>
             </Link>
           </ul>
