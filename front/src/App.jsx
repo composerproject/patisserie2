@@ -12,7 +12,7 @@ import { useState } from "react";
 import useMe from "./hooks/useMe";
 
 const App = () => {
-  useMe();
+  // useMe();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavigation = () => {

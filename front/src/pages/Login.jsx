@@ -19,7 +19,7 @@ function Login() {
       // Assuming a successful login redirects to '/dashboard'
       navigate('/admin');
     } catch (error) {
-      console.error('Login failed:', error);
+      // console.error('Login failed:', error);
       // Handle error, e.g., show an error message
     }
   };

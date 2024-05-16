@@ -17,13 +17,13 @@ const Home = () => {
       await logout().unwrap(); // Call the logout endpoint
       dispatch(resetAuth());  // Reset the auth state in Redux
     } catch (error) {
-      console.error('Logout failed:', error);
+      // console.error('Logout failed:', error);
     }
   };
 
   useEffect(() => {
     if (isSuccess) {
-      console.log("Logged out successfully!");
+      // console.log("Logged out successfully!");
       // window.location.href = '/login'; // Redirect to login after logout
     }
   }, [isSuccess]);
@@ -41,7 +41,7 @@ const Home = () => {
        
        <h3>Jeu Yahtzee</h3>
         {/* <p className="alert-message"> */}
-{/*<button onClick={handleLogout} disabled={isLoggingOut}>Log Out</button>*/}
+<button onClick={handleLogout} disabled={isLoggingOut}>Log Out</button>
           {/* Gourmandise organise un jeu concours inspiré du yahtzee ! */}
         {/* </p>{" "} */}
         <p className="alert-message">

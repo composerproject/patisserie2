@@ -13,14 +13,15 @@ const useMe = () => {
     const { user } = useSelector((s) => s.me)
     const dispatch = useDispatch()
 
+    
     useEffect(() => {
-        dispatch(fetchMe)
+        dispatch(fetchMe);
     }, [dispatch])
     
-    useEffect(() =>{
-        if( Object.keys(user || {}).length > 0)
-            dispatch(changeloggedIn(true))
-    }, [user])
+    // useEffect(() =>{
+    //     if( Object.keys(user || {}).length > 0)
+    //         dispatch(changeloggedIn(true))
+    // }, [user])
     
     return {
        user

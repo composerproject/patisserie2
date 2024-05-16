@@ -7,6 +7,7 @@ import {
 } from "../store/yamsSlice";
 import { Link } from "react-router-dom";
 import Dice from "../components/Dice";
+import { useGetMeQuery, useGetPastriesQuery } from "../features/pastry";
 
 const Game = () => {
   const { dice, rollsLeft, selectedDice, scores } = useSelector(
@@ -26,7 +27,51 @@ const Game = () => {
     }
   };
 
+  const { data: me, error : meError, isLoading : meIsLoading } = useGetMeQuery();
+ 
+
+  // const handleLogout = async () => {
+  //   try {
+  //     await logout().unwrap(); // Call the logout endpoint
+  //     dispatch(resetAuth());  // Reset the auth state in Redux
+  //   } catch (error) {
+  //     // console.error('Logout failed:', error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     // console.log("Logged out successfully!");
+  //     // window.location.href = '/login'; // Redirect to login after logout
+  //   }
+  // }, [isSuccess]);
+
+  // const images = pastries ? pastries.map(pastry => ({
+  //   name: pastry.name,
+  //   image: pastry.image
+  // })) : [];
+
+  const handleGetMe = async () => {
+    console.log("handle get me");
+    me? console.log(me) : console.log("no me");
+//     try {
+//       const me = await me().unwrap();
+//       // console.log(me); 
+//       // const result = await login({ email, password }).unwrap();
+//       // dispatch(changeloggedIn(true));
+//       // Assuming a successful login redirects to '/dashboard'
+//       // navigate('/admin');
+//     } catch (error) {
+// console.log("error get me failed", error);
+//       // console.error('get me failed:', error);
+//       // Handle error, e.g., show an error message
+//     }
+  }
+
   return (
+    <>
+    {/* <button onClick={handleGetMe}>Get Me Query</button> */}
+    <h2>Bonjour {me? me.name : ""} ! </h2>
     <div className="diceWrapper content-wrapper">
       <div className="diceList">
         {dice.map((d, i) => {
@@ -60,6 +105,7 @@ const Game = () => {
         </Link>
       </div>
     </div>
+    </>
   );
 };
 

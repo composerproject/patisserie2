@@ -9,6 +9,10 @@ export const pastryApi = createApi({
       getPastries: builder.query({
         query: () => `game/pastries`,
       }),
+      // authentified
+      getApiPastries: builder.query({
+        query: () => `api/pastries`,
+      }),
       getWinPastries: builder.query({
         query: (quantity) => `game/win-pastries/${quantity}`,
       }),
@@ -56,12 +60,18 @@ export const pastryApi = createApi({
       getMe: builder.query({
         query: () => `me`,
       }),
+      // getMe: builder.mutation({
+      //   query: () => ({
+      //       url: `me`,
+      //       method: 'GET', // or POST if that's what your backend requires
+      //   }),
+      // }),
 
     }),
   })
 
   export const { useGetPastriesQuery, useGetWinPastriesQuery, useGetPastryFromIdQuery, useGetRefreshQuery, 
     useLoginMutation, useDeletePastryMutation, useCreatePastryMutation, useLogoutQuery,
-  useGetUsersQuery, useGetMeQuery, useLogoutMutation } = pastryApi
+  useGetUsersQuery, useGetMeQuery, useLogoutMutation, useGetApiPastriesQuery } = pastryApi
 
   
