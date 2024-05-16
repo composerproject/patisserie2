@@ -41,7 +41,7 @@ const App = () => {
           </ul>
         </nav>
         <div className="main-wrapper">
-          <img className="hero" src="../public/img-pat-2.jpg" alt="" />
+          {/* <img className="hero" src="../public/img-pat-2.jpg" alt="" /> */}
           <Routes>
             <Route path="/" exact element={<Home />} />{" "}
             <Route path="/game" element={<Game />} />{" "}

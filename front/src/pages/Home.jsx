@@ -16,8 +16,6 @@ const Home = () => {
   return (
     <>
       <div className="content-wrapper">
-        <h2>Bienvenue chez gourmandise !</h2>
-        <h3>La boulangerie qui vous donne le smile</h3>
         <p className="alert-message">Le saviez vous ? </p>
         <p className="alert-message">
           Gourmandise organise un jeux concours axé sur le yams !
@@ -33,7 +31,6 @@ const Home = () => {
           <button>Je tente ma chance</button>
         </Link>
       </div>
-      <h3> Nos Pâtisseries :</h3>
       {isLoading && <p>Loading...</p>}
       {error && <p>Error loading pastries: {error.message}</p>}
       {pastries && <Gallery images={images} />}

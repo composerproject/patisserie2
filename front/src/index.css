@@ -4,7 +4,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: white;
   background-color: #fffaf0;
 
   font-synthesis: none;
@@ -101,8 +101,6 @@ nav ul li:hover {
 
 /* MAIN */
 .content-wrapper {
-  position: absolute;
-  top: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
