@@ -1,40 +1,47 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useGetPastriesQuery, useDeletePastryMutation } from '../features/pastry';
+import { useGetPastriesQuery, useDeletePastryMutation, useGetApiPastriesQuery } from '../features/pastry';
 import { useSelector } from 'react-redux';
 import useMe from '../hooks/useMe';
 
 function Admin() {
   
   const navigate = useNavigate(); // useNavigate instead of useHistory
-  const { data: pastries, error, isLoading, refetch } = useGetPastriesQuery();
-  const [deletePastry, { isLoading: isDeleting, isSuccess }] = useDeletePastryMutation();
+  // const { data: pastries, error, isLoading, refetch } = useGetPastriesQuery();
+  // TEST
+  const { data: pastries, error, isLoading, refetch } = useGetApiPastriesQuery();
+  const [deletePastry, { isLoading: isDeleting, isSuccess: isDeletingSuccess }] = useDeletePastryMutation();
 
   const { isLoggedIn } = useSelector(state => state.auth);
-  const {user} = useMe();
+  // const {user} = useMe();
+  // console.log(user);
   
   useEffect(() => {
-    console.log("admin effect user : ");
-    console.log(user);
+    // console.log("admin effect user : ");
+    // console.log(user);
       if (isLoggedIn !== true) {
-        console.log("Effect admin : is logged in false");
+        // console.log("Effect admin : is logged in false");
           // navigate('/login');
           return ;
       }
       else {
-        console.log("Effect admin : is logged in true");
+        // console.log("Effect admin : is logged in true");
       }
   }, [navigate]);
 
   useEffect(() => {
-      if (isSuccess) {
+      if (isDeletingSuccess) {
           refetch();  // Refetch the pastries list after a pastry is deleted
       }
-  }, [isSuccess, refetch]);
+  }, [isDeletingSuccess, refetch]);
 
   const handleDelete = async (id) => {
     await deletePastry(id);
 };
+
+
+// if (!pastries) navigate("/game");
+if (!pastries) return;
 
   return (
     <div>

@@ -7,6 +7,7 @@ import {
 } from "../store/yamsSlice";
 import { Link } from "react-router-dom";
 import Dice from "../components/Dice";
+import { useGetMeQuery, useGetPastriesQuery } from "../features/pastry";
 
 const Game = () => {
   const { dice, rollsLeft, selectedDice, scores } = useSelector(
@@ -26,7 +27,17 @@ const Game = () => {
     }
   };
 
+  // equivalent de useMe
+  const { data: me, error : meError, isLoading : meIsLoading } = useGetMeQuery();
+ 
+
+
+
+
+
   return (
+    <>
+    <h2>Bonjour {me? me.name : ""} ! </h2>
     <div className="game-wrapper">
       <div className="diceWrapper content-wrapper">
         <div className="diceList">
@@ -64,6 +75,7 @@ const Game = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

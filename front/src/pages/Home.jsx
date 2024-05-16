@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGetPastriesQuery, useLogoutMutation } from "../features/pastry";
 import Gallery from "../components/Gallery";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import FavoritePastryCard from "../components/FavoritePastryCard";
 
 const Home = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();  
   const { data: pastries, error, isLoading } = useGetPastriesQuery();
 
@@ -17,14 +18,13 @@ const Home = () => {
       await logout().unwrap(); // Call the logout endpoint
       dispatch(resetAuth());  // Reset the auth state in Redux
     } catch (error) {
-      console.error('Logout failed:', error);
+      // console.error('Logout failed:', error);
     }
   };
 
   useEffect(() => {
     if (isSuccess) {
-      console.log("Logged out successfully!");
-      // window.location.href = '/login'; // Redirect to login after logout
+      window.location.href = '/login'; // Redirect to login after logout avec un refresh, sinon il reste connecté
     }
   }, [isSuccess]);
 
@@ -41,7 +41,7 @@ const Home = () => {
        
        <h3>Jeu Yahtzee</h3>
         {/* <p className="alert-message"> */}
-{/*<button onClick={handleLogout} disabled={isLoggingOut}>Log Out</button>*/}
+<button onClick={handleLogout} disabled={isLoggingOut}>Log Out</button>
           {/* Gourmandise organise un jeu concours inspiré du yahtzee ! */}
         {/* </p>{" "} */}
         <p className="alert-message">
