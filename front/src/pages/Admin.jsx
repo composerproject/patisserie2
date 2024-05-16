@@ -1,15 +1,17 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGetPastriesQuery, useDeletePastryMutation } from '../features/pastry';
+import { useSelector } from 'react-redux';
 
 function Admin() {
   const navigate = useNavigate(); // useNavigate instead of useHistory
   const { data: pastries, error, isLoading, refetch } = useGetPastriesQuery();
   const [deletePastry, { isLoading: isDeleting, isSuccess }] = useDeletePastryMutation();
-
+  const {isLoggedIn} = useSelector(s => s.auth);
+  
   useEffect(() => {
-      const isLoggedIn = localStorage.getItem('isLoggedIn');
-      if (isLoggedIn !== 'true') {
+      // const isLoggedIn = localStorage.getItem('isLoggedIn');
+      if (isLoggedIn !== true) {
           navigate('/login');
       }
   }, [navigate]);
