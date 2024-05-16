@@ -8,6 +8,7 @@ import { useEffect } from "react";
 const Home = () => {
   const dispatch = useDispatch();  
   const { data: pastries, error, isLoading } = useGetPastriesQuery();
+
   const [logout, { isLoading: isLoggingOut, isSuccess, isError }] = useLogoutMutation(); 
 
   const handleLogout = async () => {
@@ -33,18 +34,28 @@ const Home = () => {
 
   return (
     <>
-      <div> 
+      <div className="content-wrapper">
+        <p className="alert-message">Le saviez vous ? </p>
+        <p className="alert-message">
         <button onClick={handleLogout} disabled={isLoggingOut}>Log Out</button>
-        <h2>Bienvenue au jeu de Yams !</h2>
-        <p>Commencez à jouer en cliquant sur le bouton ci-dessous :</p>
+          Gourmandise organise un jeux concours axé sur le yams !
+        </p>{" "}
+        <p className="alert-message">
+          C'est l'occasion unique de gagner des patisseries succulente alors
+          dépéchez- vous d'en profiter !!! 🍰{" "}
+        </p>
+        <h2>
+          Pour accéder au jeu c'est cliquez juste en dessous, bonne chance !
+        </h2>
         <Link to="/game">
-          <button>Commencer le jeu</button>
+          <button>Je tente ma chance</button>
         </Link>
       </div>
-      <h3>Pâtisseries :</h3>
       {isLoading && <p>Loading...</p>}
       {error && <p>Error loading pastries: {error.message}</p>}
       {pastries && <Gallery images={images} />}
+
+      <div className="second-section"></div>
     </>
   );
 };

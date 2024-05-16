@@ -22,9 +22,10 @@ const App = () => {
     <Router>
       <div className="global-wrapper">
         <div className="nav-toggle-button" onClick={toggleNavigation}>
-          <img src="../public/bars-svgrepo-com.svg" alt="" />
+          <img src="../public/bars-red.svg" alt="" />
         </div>
         <nav className={isOpen ? "open" : "closed"}>
+          <h1 className="main-title">Gourmandise</h1>
           <ul>
             <Link to="/">
               <li>Accueil</li>
@@ -41,7 +42,7 @@ const App = () => {
           </ul>
         </nav>
         <div className="main-wrapper">
-          <h1>Jeu de Yams</h1>
+          {/* <img className="hero" src="../public/img-pat-2.jpg" alt="" /> */}
           <Routes>
             <Route path="/" exact element={<Home />} />{" "}
             <Route path="/game" element={<Game />} />{" "}

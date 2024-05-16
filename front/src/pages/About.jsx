@@ -2,7 +2,7 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div>
+    <div className="content-wrapper">
       <h2>À propos de nous</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec ex eu

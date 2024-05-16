@@ -4,15 +4,18 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: white;
   background-color: #fffaf0;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
-  background-image: url("../public/img-pat-2.jpg");
+@font-face {
+  font-family: "Indie-Flower";
+  src: url("./fonts/IndieFlower-Regular.ttf") format("ttf");
 }
 
 /* BODY */
@@ -21,6 +24,17 @@ body {
   margin: 0;
   place-items: center;
   box-sizing: border-box;
+}
+
+.hero {
+  width: 100%;
+  height: 90vh;
+  opacity: 70%;
+}
+
+.hero img {
+  height: auto;
+  width: 100%;
 }
 
 /* WRAPPERS */
@@ -33,20 +47,28 @@ body {
 
 .main-wrapper {
   text-align: center;
-  height: 91.7vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* NAV */
 
 .nav-toggle-button {
-  width: 3rem;
-  height: 3rem;
+  width: 5rem;
+  height: 5rem;
   display: none;
+  z-index: 1000;
 }
 
 .nav-toggle-button img {
   width: auto;
   height: 100%;
+}
+
+.main-title {
+  color: white;
+  font-family: "Indie-Flower";
 }
 
 nav {
@@ -55,7 +77,8 @@ nav {
   background-color: #daa520;
   transition: 1s;
   padding: 1rem;
-  margin-top: 0.5rem;
+
+  display: flex;
 }
 
 nav ul {
@@ -64,6 +87,7 @@ nav ul {
   margin: 0;
   display: flex;
   justify-content: space-evenly;
+  width: 100%;
 }
 
 nav ul li {
@@ -76,6 +100,20 @@ nav ul li:hover {
 }
 
 /* MAIN */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.alert-message {
+  background-color: rgba(255, 85, 85, 1);
+  border-radius: 0.6rem;
+  padding: 0.5rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -103,10 +141,10 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  /* background-color: #1a1a1a; */
   background-color: #ffbb70;
   cursor: pointer;
   transition: border-color 0.25s;
+  color: #213547;
 }
 button:hover {
   border-color: #646cff;
@@ -115,6 +153,22 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+/* HOME.JSX */
+
+.second-section {
+  background-color: #f9f9f9;
+}
+
+/* GAME.JSX */
+
+.game-button-wrapper {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* MEDIA QUERY */
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -347,11 +401,12 @@ div.horizontal-scroll-container p {
 @media screen and (max-width: 768px) {
   .nav-toggle-button {
     display: block;
+    position: absolute;
+    top: 10px;
   }
 
   nav {
     padding: 0%;
-    position: relative;
   }
 
   nav ul {
@@ -361,13 +416,29 @@ div.horizontal-scroll-container p {
 
   .open {
     left: 0px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+  }
+
+  .open ul {
+    gap: 2rem;
+  }
+
+  .open ul li {
+    font-size: 20px;
   }
 
   .closed {
     left: -1000px;
-  }
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 
-  .closed nav ul li {
-    display: none;
+    z-index: 999;
   }
 }
