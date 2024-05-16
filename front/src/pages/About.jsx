@@ -2,7 +2,7 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div className="content-wrapper">
+    <div className="content-wrapper about-wrapper">
       <h2>À propos de nous</h2>
       <p className="left-text">
         À la Boulangerie , nous avons à cœur de raviver les souvenirs d'une
@@ -23,6 +23,20 @@ const AboutUs = () => {
         quartier de Montmartre, à Paris. Depuis lors, Douceur d'antan est
         devenue une destination prisée pour les gourmands à la recherche
         d'authenticité et de qualité.
+      </p>
+      <br />
+      <h3>Nos valeurs</h3>
+      <p>
+        Ce qui nous distingue, c'est notre engagement envers la qualité et
+        l'authenticité. Nous n'utilisons que les meilleurs ingrédients, souvent
+        locaux, pour façonner chaque pâtisserie, gâteau et pain avec amour et
+        soin. De nos croissants croustillants à nos gâteaux décadents, chaque
+        création témoigne de notre dévouement à l'excellence. Mais Délices
+        Sucrés est bien plus qu'un simple endroit pour satisfaire les envies
+        sucrées ; c'est un lieu de rassemblement où les amis se retrouvent, les
+        familles célèbrent les événements marquants et les inconnus deviennent
+        amis autour d'une tasse de café fraîchement préparé et d'un délicieux
+        pain aux raisins.
       </p>
     </div>
   );

@@ -95,6 +95,7 @@ nav ul {
 nav ul li {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: #fffaf0;
+  font-size: 20px;
 }
 
 nav ul li:hover {
@@ -175,8 +176,14 @@ button:focus-visible {
   background-size: cover;
   background-position-y: 25%;
   background-position-x: 46%;
-  height: 100vh;
+  height: 84.29vh;
   width: 100%;
+}
+
+.background-image-wrapper {
+  height: 84.29vh;
+  width: 100%;
+  background-size: cover;
 }
 
 /* ABOUT US */
@@ -185,6 +192,40 @@ button:focus-visible {
   padding: 1rem;
   text-align: left;
 }
+
+/* LOGIN */
+
+.login-wrapper {
+  background-image: url("../public/login-bg.jpeg");
+  background-position-x: center;
+  background-position-y: center;
+}
+
+.login-container {
+  padding: 2rem;
+  margin: 10% 0% 0% 42%;
+  border: 2px solid black;
+  border-radius: 0.6rem;
+  width: 15%;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-inputs input {
+  border-radius: 0.6rem;
+}
+
+/* ABOUT WRAPPER */
 
 /* MEDIA QUERY */
 
@@ -206,7 +247,7 @@ table {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1em;
-  margin-top: 25%;
+  margin-top: 20%;
 }
 
 /* General styles for the dice */
@@ -403,6 +444,12 @@ div.horizontal-scroll-container p {
   font-weight: 700;
 }
 
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+  .login-container {
+    margin: 16.5% 0% 0% 39.5%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .nav-toggle-button {
     display: block;
@@ -445,6 +492,34 @@ div.horizontal-scroll-container p {
     height: 100%;
 
     z-index: 999;
+  }
+
+  .game-wrapper {
+    height: 100vh;
+  }
+
+  .login-wrapper {
+    height: 100vh;
+    background-position-x: center;
+    background-position-y: center;
+  }
+
+  .login-container {
+    margin: 30% 0% 0% 40%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .login-container {
+    margin: 50% 0% 0% 28%;
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .login-container {
+    margin: 65% 0% 0% 28%;
+    width: 30%;
   }
 }
 
