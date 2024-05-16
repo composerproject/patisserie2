@@ -27,31 +27,16 @@ const Game = () => {
     }
   };
 
+  // equivalent de useMe
   const { data: me, error : meError, isLoading : meIsLoading } = useGetMeQuery();
  
 
 
 
-  const handleGetMe = async () => {
-    console.log("handle get me");
-    me? console.log(me) : console.log("no me");
-//     try {
-//       const me = await me().unwrap();
-//       // console.log(me); 
-//       // const result = await login({ email, password }).unwrap();
-//       // dispatch(changeloggedIn(true));
-//       // Assuming a successful login redirects to '/dashboard'
-//       // navigate('/admin');
-//     } catch (error) {
-// console.log("error get me failed", error);
-//       // console.error('get me failed:', error);
-//       // Handle error, e.g., show an error message
-//     }
-  }
+
 
   return (
     <>
-    {/* <button onClick={handleGetMe}>Get Me Query</button> */}
     <h2>Bonjour {me? me.name : ""} ! </h2>
     <div className="game-wrapper">
       <div className="diceWrapper content-wrapper">

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGetPastriesQuery, useLogoutMutation } from "../features/pastry";
 import Gallery from "../components/Gallery";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import FavoritePastryCard from "../components/FavoritePastryCard";
 
 const Home = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();  
   const { data: pastries, error, isLoading } = useGetPastriesQuery();
 
@@ -23,8 +24,7 @@ const Home = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      // console.log("Logged out successfully!");
-      // window.location.href = '/login'; // Redirect to login after logout
+      window.location.href = '/login'; // Redirect to login after logout avec un refresh, sinon il reste connecté
     }
   }, [isSuccess]);
 
