@@ -184,15 +184,12 @@ button:focus-visible {
 
 .game-wrapper {
   background-image: url("../public/My-new-creation.png");
-  background-size: cover;
   background-position-y: 25%;
   background-position-x: 46%;
-  height: 90vh;
-  width: 100%;
 }
 
 .background-image-wrapper {
-  height: 84.29vh;
+  height: 90vh;
   width: 100%;
   background-size: cover;
 }

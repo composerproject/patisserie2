@@ -11,6 +11,7 @@ const initialState = {
   selectedDice: Array(5).fill(true),
 };
 
+// Actions for the rest of the code
 const yamsSlice = createSlice({
   name: "yams",
   initialState,
