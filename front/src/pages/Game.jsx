@@ -33,11 +33,11 @@ const Game = () => {
   return (
     <>
       <div className="game-wrapper">
-        <h2 className="">
+        {/* <h2 className="">
           {" "}
           <strong>Bonjour {me ? me.name : ""} ! </strong>{" "}
-        </h2>
-        <div className="diceWrapper content-wrapper">
+        </h2> */}
+        <div className="dice-wrapper content-wrapper">
           <div className="diceList">
             {dice.map((d, i) => {
               const handleDiceClick =

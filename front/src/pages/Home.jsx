@@ -36,17 +36,11 @@ const Home = () => {
   return (
     <>
     <section id="concours-section">
-      {/* <div className="content-wrapper"> */}
       <div className="circle-wrapper">
        
        <h3>Jeu Yahtzee</h3>
-        {/* <p className="alert-message"> */}
-<button onClick={handleLogout} disabled={isLoggingOut}>Log Out</button>
-          {/* Gourmandise organise un jeu concours inspiré du yahtzee ! */}
-        {/* </p>{" "} */}
+{/* <button onClick={handleLogout} disabled={isLoggingOut}>Log Out</button> */}
         <p className="alert-message">
-          {/* C'est l'occasion unique de gagner des patisseries succulente alors
-          dépéchez- vous d'en profiter !!! 🍰{" "} */}
           Jusqu'à 3 pâtisseries à gagner !
         </p>
 

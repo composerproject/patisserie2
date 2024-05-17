@@ -19,7 +19,7 @@ function Results() {
   } = useGetWinPastriesQuery(result ? result.reward : undefined);
 
   return (
-    <div>
+    <>
       <h1>Résultats</h1>
       {!result ? (
         <p>Dommage, vous retenterez votre chance la prochaine fois !</p>
@@ -34,10 +34,11 @@ function Results() {
             </strong>
           </p>
           {pastries && (
-            <div className="pastryWonList">
+            <div className="pastry-won-list">
               {pastries.map((pastry, index) => (
-                <div key={index} className="wonPastry">
-                  {pastry.name}
+                <div key={index} className="favorite-card">
+                  <p>{pastry.name}</p>
+                  <img src={pastry.image}></img>
                 </div>
               ))}
             </div>
@@ -66,7 +67,7 @@ function Results() {
       <Link to="/game">
         <button className="back-btn">Retourner au jeu</button>
       </Link>
-    </div>
+    </>
   );
 }
 
