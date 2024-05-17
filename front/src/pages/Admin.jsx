@@ -1,9 +1,11 @@
-import {useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useGetPastriesQuery, useDeletePastryMutation, useCreatePastryMutation, useUpdatePastryMutation } from '../features/pastry';
+import { useGetPastriesQuery, useDeletePastryMutation, useCreatePastryMutation, useUpdatePastryMutation, useGetApiPastriesQuery } from '../features/pastry';
 
 function Admin() {
-  const { data: pastries, error, isLoading, refetch } = useGetPastriesQuery();
+  console.log("admin");
+  // const { data: pastries, error, isLoading, refetch } = useGetPastriesQuery();
+  const { data: pastries, error, isLoading, refetch } = useGetApiPastriesQuery();
   const [deletePastry, { isLoading: isDeleting, isSuccess: isDeletingSuccess }] = useDeletePastryMutation();
   const [createPastry, { isLoading: isCreating, isSuccess: createSuccess }] = useCreatePastryMutation();
   const [updatePastry] = useUpdatePastryMutation(); // Assuming this mutation exists
@@ -14,6 +16,18 @@ function Admin() {
   const [editFormData, setEditFormData] = useState({ name: '', image: '', stock: 0 });
 
   const navigate = useNavigate();
+
+  const location = useLocation();
+
+  // useEffect(() => {
+  //   console.log('location :');
+  //   console.log(location);
+  //   // if(location.state?.reload){
+  //   // if(location.state === 'reload'){
+  //     // console.log("state reload");
+  //     // window.location.reload();
+  //   }
+  // },[]);
 
   useEffect(() => {
       if (isDeletingSuccess || createSuccess) {
@@ -61,81 +75,109 @@ function Admin() {
     setEditingId(null);
   };
 
-  if (!pastries){
-    navigate('/login');
-  return;
-  }
-    
+  // if (!pastries){
+  //   navigate('/login');
+  // return;
+  // }
 
+  useEffect(() => {
+    // Explicitly handle the loading state and errors
+    // if (!isLoading && error) {
+    //   console.log("error :");
+    //   console.log(error.status);
+    //   // Handle errors like 401 Unauthorized specifically if possible
+    //   if (error.status == 401) {
+    //     console.log("erreur 401 : " + error.status)
+    //     navigate('/login');
+    //   } else {
+    //     console.log("erreur pas 401 : " + error.status);
+    //     // console.error('Error fetching pastries:', error);
+    //   }
+    // }
+  }, [isLoading, error, navigate]);
+
+  // if (!pastries && !isLoading && !error) {
+  //   // If not loading, no error, and no pastries, it's likely a logical error or data issue
+  //   console.log('No pastries data and not loading with no error - possibly uninitialized state?');
+  //   return;
+  // }
   return (
     <>
-      <h1>Dashboard</h1>
-      <section>
-        <h3>Ajouter une pâtisserie</h3>
-        <table>
-          <thead>
-              <tr>
-                  <th>Id</th>
-                  <th>Nom</th>
-                  <th>Image</th>
-                  <th>Stock</th>
-                  <th>Action</th>
-              </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{pastries.length > 0 ? +pastries[pastries.length - 1].id + 1 : 1}</td>
-              <td><input placeholder='nom' value={newName} onChange={(e) => setNewName(e.target.value)} /></td>
-              <td><input placeholder='image' value={newImage} onChange={(e) => setNewImage(e.target.value)} /></td>
-              <td><input type="number" placeholder='stock' value={newStock} onChange={(e) => setNewStock(parseInt(e.target.value) || 0)} /></td>
-              <td><button onClick={handleAdd}>Ajouter</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-      <section>
-        <h3>Mes pâtisseries</h3>
-        <div>
-          <table>
-            <thead>
+      {pastries && (
+        <>
+          <h1>Dashboard</h1>
+          <section>
+            <h3>Ajouter une pâtisserie</h3>
+            <table>
+              <thead>
+                  <tr>
+                      <th>Id</th>
+                      <th>Nom</th>
+                      <th>Image</th>
+                      <th>Stock</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
                 <tr>
-                    <th>Id</th>
-                    <th>Nom</th>
-                    <th>Image</th>
-                    <th>Stock</th>
-                    <th>Quantité gagnée</th>
-                    <th>Actions</th>
+                  <td>{pastries.length > 0 ? +pastries[pastries.length - 1].id + 1 : 1}</td>
+                  <td><input placeholder='nom' value={newName} onChange={(e) => setNewName(e.target.value)} /></td>
+                  <td><input placeholder='image' value={newImage} onChange={(e) => setNewImage(e.target.value)} /></td>
+                  <td><input type="number" placeholder='stock' value={newStock} onChange={(e) => setNewStock(parseInt(e.target.value) || 0)} /></td>
+                  <td><button onClick={handleAdd}>Ajouter</button></td>
                 </tr>
-            </thead>
-            <tbody>
-            {pastries.map((pastry) => (
-              <tr key={pastry.id}>
-                <td>{pastry.id}</td>
-                <td>{editingId === pastry.id ? <input value={editFormData.name} onChange={(e) => setEditFormData({...editFormData, name: e.target.value})} /> : pastry.name}</td>
-                <td>{editingId === pastry.id ? <input value={editFormData.image} onChange={(e) => setEditFormData({...editFormData, image: e.target.value})} /> : <img className='mini' src={pastry.image} alt={pastry.name} />}</td>
-                <td>{editingId === pastry.id ? <input type="number" value={editFormData.stock} onChange={(e) => setEditFormData({...editFormData, stock: parseInt(e.target.value) || 0})} /> : pastry.quantity}</td>
-                <td>{pastry.quantityWon}</td>
-                <td>
-                  {editingId === pastry.id ? (
-                    <>
-                      <button onClick={handleSave}>Save</button>
-                      <button onClick={handleCancel}>Cancel</button>
-                    </>
-                  ) : (
-                    <>
-                      <button onClick={() => handleEdit(pastry)}>Modifier</button>
-                      <button onClick={() => handleDelete(pastry.id)} disabled={isDeleting}>X</button>
-                    </>
-                  )}
-                </td>
-              </tr>
-            ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h3>Mes pâtisseries</h3>
+            <div>
+              <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Image</th>
+                        <th>Stock</th>
+                        <th>Quantité gagnée</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {pastries.map((pastry) => (
+                  <tr key={pastry.id}>
+                    <td>{pastry.id}</td>
+                    <td>{editingId === pastry.id ? <input value={editFormData.name} onChange={(e) => setEditFormData({...editFormData, name: e.target.value})} /> : pastry.name}</td>
+                    <td>{editingId === pastry.id ? <input value={editFormData.image} onChange={(e) => setEditFormData({...editFormData, image: e.target.value})} /> : <img className='mini' src={pastry.image} alt={pastry.name} />}</td>
+                    <td>{editingId === pastry.id ? <input type="number" value={editFormData.stock} onChange={(e) => setEditFormData({...editFormData, stock: parseInt(e.target.value) || 0})} /> : pastry.quantity}</td>
+                    <td>{pastry.quantityWon}</td>
+                    <td>
+                      {editingId === pastry.id ? (
+                        <>
+                          <button onClick={handleSave}>Save</button>
+                          <button onClick={handleCancel}>Cancel</button>
+                        </>
+                      ) : (
+                        <>
+                          <button onClick={() => handleEdit(pastry)}>Modifier</button>
+                          <button onClick={() => handleDelete(pastry.id)} disabled={isDeleting}>X</button>
+                        </>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </>
+      )}
+      {!pastries && !isLoading && (
+        <div>Loading or error...</div>
+      )}
     </>
   );
+  
 }
 
 export default Admin;

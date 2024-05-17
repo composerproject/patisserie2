@@ -5,22 +5,35 @@ import { useDispatch } from "react-redux";
 import { changeloggedIn } from "../store/auth";
 
 function Login() {
+  console.log("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [login, { isLoading, isError, error, data }] = useLoginMutation();
   const navigate = useNavigate(); // Navigation hook
   const dispatch = useDispatch();
 
-  const handleSubmit = async (event) => {
+  // Have to log in twice
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     const result = await login({ email, password }).unwrap();
+  //     // dispatch(changeloggedIn(true));
+  //     // Assuming a successful login redirects to '/dashboard'
+  //     navigate("/admin");
+  //   } catch (error) {
+  //     // console.error('Login failed:', error);
+  //     // Handle error, e.g., show an error message
+  //   }
+  // };
+
+  const handleSubmit = (event) => {
     event.preventDefault();
     try {
-      const result = await login({ email, password }).unwrap();
-      dispatch(changeloggedIn(true));
-      // Assuming a successful login redirects to '/dashboard'
-      navigate("/admin");
+      // const result = await login({ email, password }).unwrap(); 
+      const result = login({ email, password }); 
+        return navigate("/admin", {state: 'reload'}); // Delay the navigation
     } catch (error) {
-      // console.error('Login failed:', error);
-      // Handle error, e.g., show an error message
+      console.error('Login failed:', error);
     }
   };
 
