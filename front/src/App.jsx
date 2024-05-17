@@ -8,9 +8,15 @@ import Admin from "./pages/Admin";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLogoutMutation } from "./features/pastry";
+import { useDispatch, useSelector } from "react-redux";
+import { changeloggedIn, resetAuth } from "./store/auth";
+import LogoutBtn from "./components/LogoutBtn";
 
 const App = () => {
+  
+ 
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavigation = () => {
@@ -40,6 +46,7 @@ const App = () => {
             <Link to="/contact" onClick={closeNavigation}>
               <li>Contact</li>
             </Link>
+            <LogoutBtn />
           </ul>
         </nav>
         <div className="main-wrapper">
