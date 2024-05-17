@@ -8,6 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import Dice from "../components/Dice";
 import { useGetMeQuery, useGetPastriesQuery } from "../features/pastry";
+import Rules from "../components/Rules";
 
 const Game = () => {
   const { dice, rollsLeft, selectedDice, scores } = useSelector(
@@ -32,11 +33,13 @@ const Game = () => {
 
   return (
     <>
-      <div className="game-wrapper">
+      <div className="game-background">
+        <div className="game-wrapper">
         {/* <h2 className="">
-          {" "}
-          <strong>Bonjour {me ? me.name : ""} ! </strong>{" "}
+          <strong>Bonjour {me ? me.name : ""} ! </strong>
         </h2> */}
+        <h1>Yahtzee Pâtisserie</h1>
+        <Rules />
         <div className="dice-wrapper content-wrapper">
           <div className="diceList">
             {dice.map((d, i) => {
@@ -57,10 +60,8 @@ const Game = () => {
             })}
           </div>
           <div>
-            {" "}
             <p>
-              {" "}
-              <u>Lancers restants: {rollsLeft} </u>{" "}
+              <u>Lancers restants: {rollsLeft} </u>
             </p>
           </div>
           <div className="game-button-wrapper">
@@ -71,6 +72,7 @@ const Game = () => {
               <button>Voir le résultat</button>
             </Link>
           </div>
+        </div>
         </div>
       </div>
     </>

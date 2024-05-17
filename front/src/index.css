@@ -182,13 +182,14 @@ button:focus-visible {
   flex-wrap: wrap;
 }
 
-.game-wrapper {
+.game-background {
   background-image: url("../public/My-new-creation.png");
   background-size: cover;
   background-position-y: 25%;
   background-position-x: 46%;
   height: 90vh;
   width: 100%;
+  padding: 25px 10%;
 }
 
 .background-image-wrapper {
@@ -294,6 +295,16 @@ section {
   gap: 25px;
 }
 
+/* GAME */
+
+.game-wrapper h1 {
+  color: salmon;
+}
+
+.game-wrapper{
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
 /* General styles for the dice */
 
 .diceList {
@@ -302,7 +313,6 @@ section {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1em;
-  margin-top: 20%;
 }
 
 .dice {
