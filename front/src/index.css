@@ -12,7 +12,9 @@
 
 @font-face {
   font-family: "Indie-Flower";
-  src: url("./fonts/IndieFlower-Regular.ttf") format("ttf");
+  src: url("/fonts/IndieFlower-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* BODY */
@@ -135,6 +137,7 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
   color: #daa520;
+  font-family: "Indie-Flower";
 }
 
 h1 {
@@ -184,16 +187,16 @@ button:focus-visible {
 
 .game-background {
   background-image: url("../public/My-new-creation.png");
-  background-size: cover;
   background-position-y: 25%;
   background-position-x: 46%;
   height: 90vh;
   width: 100%;
   padding: 25px 10%;
+
 }
 
 .background-image-wrapper {
-  height: 84.29vh;
+  height: 90vh;
   width: 100%;
   background-size: cover;
 }

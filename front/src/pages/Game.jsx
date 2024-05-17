@@ -15,15 +15,18 @@ const Game = () => {
     (state) => state.yams
   );
   const dispatch = useDispatch();
-  const [isRolling, setIsRolling] = useState(false); // State to control dice rolling
+  // Used to prevent dice from romlling if their is no rolls left
+  const [isRolling, setIsRolling] = useState(false);
 
+  // Checck if there is any rolls left
   const rollSelectedDice = () => {
     if (rollsLeft > 0) {
-      setIsRolling(true); // Enable rolling
+      setIsRolling(true);
       dispatch(rollDice());
       setTimeout(() => {
         setIsRolling(false);
-        dispatch(resetDiceSelection()); // Reset selection after roll
+        // Reset the selection of dices
+        dispatch(resetDiceSelection());
       }, 1200); // Adjust time based on your animation needs
     }
   };
@@ -33,10 +36,11 @@ const Game = () => {
 
   return (
     <>
-      <div className="game-background">
-        <div className="game-wrapper">
+
+      <div className="game-wrapper background-image-wrapper">
         {/* <h2 className="">
-          <strong>Bonjour {me ? me.name : ""} ! </strong>
+          <strong>Bonjour {me ? me.name : ""} ! </strong>{" "}
+
         </h2> */}
         <h1>Yahtzee Pâtisserie</h1>
         <Rules />
@@ -44,9 +48,9 @@ const Game = () => {
           <div className="diceList">
             {dice.map((d, i) => {
               const handleDiceClick =
-                rollsLeft < 50
+                rollsLeft < 3
                   ? () => dispatch(toggleDiceSelection(i))
-                  : undefined; //test
+                  : undefined;
 
               return (
                 <div

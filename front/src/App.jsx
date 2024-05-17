@@ -9,10 +9,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import useMe from "./hooks/useMe";
 
 const App = () => {
-  // useMe();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavigation = () => {
