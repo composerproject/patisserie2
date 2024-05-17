@@ -26,7 +26,7 @@ const AboutUs = () => {
       </p>
       <br />
       <h3>Nos valeurs</h3>
-      <p>
+      <p className="left-text">
         Ce qui nous distingue, c'est notre engagement envers la qualité et
         l'authenticité. Nous n'utilisons que les meilleurs ingrédients, souvent
         locaux, pour façonner chaque pâtisserie, gâteau et pain avec amour et

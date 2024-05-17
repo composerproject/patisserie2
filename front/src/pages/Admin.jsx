@@ -52,7 +52,6 @@ function Admin() {
       quantity: editFormData.stock,
       quantityWon : 0
     };
-    // await updatePastry(updatedPastry);
     await updatePastry({ id: editingId, data: updatedPastry });
     setEditingId(null);
     refetch();
@@ -64,7 +63,6 @@ function Admin() {
 
   if (!pastries){
     navigate('/login');
-    // console.error("") // afficher message d'erreur sur la page
   return;
   }
     
