@@ -1,40 +1,36 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { changeloggedIn } from "../store/auth";
-import { fetchMe } from "../store/me";
+import { fetchMe } from "../store/meSlice";
 
 /**
- * HOC ( composant de haut niveau ) 
+ * HOC ( composant de haut niveau )
  * Hooks permettant de vérifier si après rechargement de la page l'utilisateur est encore connecté
- * - la méthode fetchMe fait une requête sur l'API avec le credentials si celui-ci existe ( cookie créé dans le navigateur), alors la connexion n'échoue pas et on met à true loggeIn 
- * 
+ * - la méthode fetchMe fait une requête sur l'API avec le credentials si celui-ci existe ( cookie créé dans le navigateur), alors la connexion n'échoue pas et on met à true loggeIn
+ *
  */
 const useMe = () => {
-    const { user } = useSelector((s) => s.me)
-    const dispatch = useDispatch()
+  const { user } = useSelector((s) => s.me);
+  const dispatch = useDispatch();
 
-    
-    useEffect(() => {
-        dispatch(fetchMe);
-    }, [dispatch])
-    
-    // useEffect(() =>{
-    //     if( Object.keys(user || {}).length > 0)
-    //         dispatch(changeloggedIn(true))
-    // }, [user])
-    
-    return {
-       user
-    };
+  useEffect(() => {
+    dispatch(fetchMe);
+  }, [dispatch]);
+
+  // useEffect(() =>{
+  //     if( Object.keys(user || {}).length > 0)
+  //         dispatch(changeloggedIn(true))
+  // }, [user])
+
+  return {
+    user,
+  };
 };
 
 export default useMe;
 
-
-
 // import { useEffect } from "react";
 // import { useSelector, useDispatch } from "react-redux";
-
 
 // // import { clearUserData, fetchMe } from "../store/me";
 
@@ -55,8 +51,6 @@ export default useMe;
 //     console.log("auth status : ");
 //     console.log(authStatus);
 
-
-
 //     const dispatch = useDispatch();
 
 //     useEffect(() => {
@@ -67,8 +61,7 @@ export default useMe;
 //     // useEffect(() => {
 //         //     dispatch(fetchMe());
 //         // }, []);
-        
-        
+
 //     useEffect(() => {
 //         if (status === 'succeeded' && Object.keys(user).length > 0) {
 //                 dispatch(changeloggedIn(true));
@@ -79,9 +72,9 @@ export default useMe;
 //                     dispatch(changeloggedIn(false));
 //                 }
 //             }, [user, status, dispatch]);
-            
+
 //             return { user, status };
 //     // return "return";
 // };
-            
+
 // export default useMe;
