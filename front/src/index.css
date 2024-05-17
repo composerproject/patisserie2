@@ -166,6 +166,7 @@ button {
   transition: border-color 0.25s;
   color: black;
   color: white;
+  margin: 0 2px;
 }
 button:hover {
   border-color: #646cff;
