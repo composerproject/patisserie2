@@ -36,47 +36,46 @@ const Game = () => {
 
   return (
     <>
-
       <div className="game-wrapper background-image-wrapper">
         {/* <h2 className="">
           <strong>Bonjour {me ? me.name : ""} ! </strong>{" "}
-
         </h2> */}
-        <h1>Yahtzee Pâtisserie</h1>
-        <Rules />
         <div className="dice-wrapper content-wrapper">
-          <div className="diceList">
-            {dice.map((d, i) => {
-              const handleDiceClick =
-                rollsLeft < 3
-                  ? () => dispatch(toggleDiceSelection(i))
-                  : undefined;
+          <h1>Yahtzee Pâtisserie</h1>
+          <Rules />
+          <div className="dice-wrapper content-wrapper">
+            <div className="diceList">
+              {dice.map((d, i) => {
+                const handleDiceClick =
+                  rollsLeft < 3
+                    ? () => dispatch(toggleDiceSelection(i))
+                    : undefined;
 
-              return (
-                <div
-                  key={i}
-                  onClick={handleDiceClick}
-                  className={`dice ${selectedDice[i] ? "selected" : ""}`}
-                >
-                  <Dice number={d} rolling={isRolling && selectedDice[i]} />
-                </div>
-              );
-            })}
+                return (
+                  <div
+                    key={i}
+                    onClick={handleDiceClick}
+                    className={`dice ${selectedDice[i] ? "selected" : ""}`}
+                  >
+                    <Dice number={d} rolling={isRolling && selectedDice[i]} />
+                  </div>
+                );
+              })}
+            </div>
+            <div>
+              <p>
+                <u>Lancers restants: {rollsLeft} </u>
+              </p>
+            </div>
+            <div className="game-button-wrapper">
+              <button onClick={rollSelectedDice} disabled={rollsLeft === 0}>
+                Lancer les dés
+              </button>
+              <Link to="/results">
+                <button>Voir le résultat</button>
+              </Link>
+            </div>
           </div>
-          <div>
-            <p>
-              <u>Lancers restants: {rollsLeft} </u>
-            </p>
-          </div>
-          <div className="game-button-wrapper">
-            <button onClick={rollSelectedDice} disabled={rollsLeft === 0}>
-              Lancer les dés
-            </button>
-            <Link to="/results">
-              <button>Voir le résultat</button>
-            </Link>
-          </div>
-        </div>
         </div>
       </div>
     </>
