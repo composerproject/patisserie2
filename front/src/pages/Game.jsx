@@ -36,7 +36,7 @@ const Game = () => {
 
   return (
     <>
-      <div className="game-wrapper background-image-wrapper">
+      <div className="game-wrapper game-background background-image-wrapper">
         {/* <h2 className="">
           <strong>Bonjour {me ? me.name : ""} ! </strong>{" "}
         </h2> */}
