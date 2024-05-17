@@ -36,10 +36,11 @@ const Game = () => {
 
   return (
     <>
-      <div className="game-wrapper background-image-wrapper">
+      <div className="game-background background-image-wrapper">
         {/* <h2 className="">
           <strong>Bonjour {me ? me.name : ""} ! </strong>{" "}
         </h2> */}
+        <div className="game-wrapper">
         <div className="dice-wrapper content-wrapper">
           <h1>Yahtzee Pâtisserie</h1>
           <Rules />
@@ -64,7 +65,7 @@ const Game = () => {
             </div>
             <div>
               <p>
-                <u>Lancers restants: {rollsLeft} </u>
+                Lancers restants: {rollsLeft} 
               </p>
             </div>
             <div className="game-button-wrapper">
@@ -76,6 +77,7 @@ const Game = () => {
               </Link>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </>

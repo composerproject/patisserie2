@@ -185,15 +185,7 @@ button:focus-visible {
   flex-wrap: wrap;
 }
 
-.game-background {
-  background-image: url("../public/My-new-creation.png");
-  background-position-y: 25%;
-  background-position-x: 46%;
-  height: 90vh;
-  width: 100%;
-  padding: 25px 10%;
 
-}
 
 .background-image-wrapper {
   height: 90vh;
@@ -306,6 +298,18 @@ section {
 
 .game-wrapper{
   background-color: rgba(255, 255, 255, 0.6);
+  padding:25px;
+  border-radius: 5px;
+}
+
+.game-background {
+  background-image: url("../public/My-new-creation.png");
+  background-size: cover;
+  background-position-y: 25%;
+  background-position-x: 46%;
+  height: 90vh;
+  width: 91.1%;
+  padding: 25px 10%;
 }
 
 /* General styles for the dice */
@@ -557,10 +561,7 @@ div.horizontal-scroll-container p {
     z-index: 999;
   }
 
-  .game-wrapper {
-    height: 100vh;
-    padding: 10%;
-  }
+
 
   .login-wrapper {
     height: 100vh;
@@ -643,10 +644,10 @@ div.horizontal-scroll-container p {
     z-index: 999;
   }
 
-  .game-wrapper {
+  /* .game-wrapper {
     height: 100vh;
     padding: 10%;
-  }
+  } */
 
   .login-wrapper {
     height: 100vh;
