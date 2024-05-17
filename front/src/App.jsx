@@ -47,13 +47,13 @@ const App = () => {
         <div className="main-wrapper">
           {/* <img className="hero" src="../public/img-pat-2.jpg" alt="" /> */}
           <Routes>
-            <Route path="/" exact element={<Home />} />{" "}
-            <Route path="/game" element={<Game />} />{" "}
-            <Route path="/results" element={<Results />} />{" "}
-            <Route path="/login" element={<Login />} />{" "}
-            <Route path="/admin" element={<Admin />} />{" "}
-            <Route path="/about" element={<About />} />{" "}
-            <Route path="/contact" element={<Contact />} />{" "}
+            <Route path="/" exact element={<Home />} />
+            <Route path="/game" element={<Game />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>
       </div>
